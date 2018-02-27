@@ -31,6 +31,7 @@ public class Paste{
     public long getSize() { return mJSON.getLong(KEY_SIZE);}
     public long getExpire() { return mJSON.getLong(KEY_EXPIRE);}
     public String getKey() { return mJSON.getString(KEY_KEY);}
+
     public void print(){
         System.out.println(getKey());
         System.out.println(getUser());
