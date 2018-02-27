@@ -1,14 +1,10 @@
 package de.graphicscore.pastebinscraper;
 
 import com.sun.istack.internal.Nullable;
-import com.sun.org.apache.xalan.internal.xslt.EnvironmentCheck;
 import org.json.JSONArray;
-import org.json.JSONObject;
-import sun.tools.java.Environment;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.sql.*;
@@ -64,10 +60,8 @@ public class PastebinScraper {
             SCRAPING_API_URL = new URL("https://pastebin.com/api_scraping.php?limit=100");
             scrapeThread = new Thread(PastebinScraper::bulkScrape,"ScrapeThread");
             scrapeThread.start();
-        } catch (MalformedURLException e) {
+        } catch (Exception e) {
             System.err.println("Could not parse scraping url " + e.getMessage());
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
