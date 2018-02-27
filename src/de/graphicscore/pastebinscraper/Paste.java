@@ -32,9 +32,9 @@ public class Paste{
     public String getTitle() { return mJSON.getString(KEY_TITLE); }
     public String getScrapeUrl() { return mJSON.getString(KEY_SCRAPE_URL); }
     public String getFullUrl() { return mJSON.getString(KEY_FULL_URL); }
-    public long getDate() { return mJSON.getLong(KEY_DATE);}
+    public long getDate() { return mJSON.getLong(KEY_DATE) > 0 ? mJSON.getLong(KEY_DATE) * 1000 : 0;}
     public long getSize() { return mJSON.getLong(KEY_SIZE);}
-    public long getExpire() { return mJSON.getLong(KEY_EXPIRE);}
+    public long getExpire() { return mJSON.getLong(KEY_EXPIRE) > 0 ? mJSON.getLong(KEY_EXPIRE) * 1000 : 0;}
     public String getKey() { return mJSON.getString(KEY_KEY);}
     public String getDateAsString(){
         return dateFormat.format(new Date(getDate()));
