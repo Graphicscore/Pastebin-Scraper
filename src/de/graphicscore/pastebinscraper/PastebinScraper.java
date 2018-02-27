@@ -118,7 +118,7 @@ public class PastebinScraper {
             HttpsURLConnection connection = (HttpsURLConnection) new URL(paste.getScrapeUrl()).openConnection();
             BufferedReader br =
                     new BufferedReader(
-                            new InputStreamReader(connection.getInputStream()));
+                            new InputStreamReader(connection.getInputStream(),Charset.forName("UTF-8")));
 
             String input;
 
