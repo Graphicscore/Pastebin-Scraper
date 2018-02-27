@@ -2,7 +2,12 @@ package de.graphicscore.pastebinscraper;
 
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Paste{
+
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     private static final String
     KEY_USER = "user",
@@ -31,6 +36,13 @@ public class Paste{
     public long getSize() { return mJSON.getLong(KEY_SIZE);}
     public long getExpire() { return mJSON.getLong(KEY_EXPIRE);}
     public String getKey() { return mJSON.getString(KEY_KEY);}
+    public String getDateAsString(){
+        return dateFormat.format(new Date(getDate()));
+    }
+
+    public String getExpireAsString(){
+        return dateFormat.format(new Date(getExpire()));
+    }
 
     public void print(){
         System.out.println(getKey());
