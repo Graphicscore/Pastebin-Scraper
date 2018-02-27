@@ -23,6 +23,7 @@ public class PastebinScraper {
     private static HashMap<String, Paste> mPasteCache;
 
     private static File startupDir;
+    private static File pastesDir;
     private static Properties settings;
 
     private static Thread storeThread;
@@ -32,9 +33,11 @@ public class PastebinScraper {
         System.out.println("Running");
 
         startupDir = new File(System.getProperty("user.dir"));
+        pastesDir = new File(startupDir,"pastes");
         try {
             System.out.println("Working Directory : " + startupDir);
             loadSettings();
+            pastesDir.mkdirs();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -119,7 +122,7 @@ public class PastebinScraper {
 
             String input;
 
-            File pasteFile = new File("/Users/dlouven/pastebin",paste.getKey() + ".paste");
+            File pasteFile = new File(pastesDir,paste.getKey() + ".paste");
 
             if(!pasteFile.exists()){
                 pasteFile.createNewFile();
